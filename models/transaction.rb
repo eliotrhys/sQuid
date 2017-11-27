@@ -29,7 +29,7 @@ class Transaction
   end
 
   def self.all
-    sql = "SELECT * FROM transactions"
+    sql = "SELECT * FROM transactions ORDER BY id DESC"
     values = []
     transaction_data = SqlRunner.run(sql, values)
     result = transaction_data.map {|transaction| Transaction.new(transaction)}
@@ -84,6 +84,24 @@ class Transaction
     WHERE id = $4"
     values = [@amount, @merchant_id, @tag_id, @id]
     SqlRunner.run(sql, values)
+  end
+
+  def self.total_spend()
+    sql = "SELECT SUM(amount)
+    FROM transactions"
+    values = []
+    result = SqlRunner.run(sql, values)
+    return result[0]['sum']
+  end
+
+  def self.by_tag
+    sql = "SELECT * FROM merchants
+    INNER JOIN transactions
+    ON transactions.merchant_id = merchants.id
+    WHERE merchants.id = 1"
+    values = []
+    result = SqlRunner.run(sql, values)
+    return result[0]
   end
 
 end

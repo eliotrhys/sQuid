@@ -1,3 +1,10 @@
+<nav>
+  <ul>
+    <li><a href="">Transactions By Merchant</a></li>
+    <li><a href="">Transactions By Tag</a></li>
+  </ul>
+</nav>
+
 <h1>Transaction's Table</h1>
 
 <table>
@@ -8,6 +15,7 @@
   <th>Tag</th>
   <th></th>
   <th></th>
+  <th></th>
 </tr>
 <% for transaction in @transactions %>
 <tr>
@@ -15,6 +23,8 @@
   <td><%= transaction.amount %></td>
   <td><%= transaction.merchant.merchant_name %></td>
   <td><%= transaction.tag.tag %></td>
+  <td><form action="/transactions/<%= transaction.id %>" method="GET">
+    <input type="submit" value="INFO"/></form></td>
   <td><form action="/transactions/<%= transaction.id %>/edit" method="GET">
     <input type="submit" value="EDIT"/></form></td>
   <td><form action="/transactions/<%= transaction.id %>/delete" method="POST">
@@ -24,3 +34,6 @@
 </table>
 
 <button><a href="new_transaction">Add Transaction</a></button>
+
+
+<h1>Total Spend: £ <%= Transaction.total_spend %></h1>
