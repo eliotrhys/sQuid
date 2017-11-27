@@ -94,14 +94,15 @@ class Transaction
     return result[0]['sum']
   end
 
-  def self.by_tag
-    sql = "SELECT * FROM merchants
-    INNER JOIN transactions
-    ON transactions.merchant_id = merchants.id
-    WHERE merchants.id = 1"
-    values = []
+  def self.by_tag(id)
+    sql = "SELECT * FROM transactions
+    INNER JOIN tags
+    ON transactions.tag_id = tags.id
+    WHERE tags.id = $1"
+    values = [id]
     result = SqlRunner.run(sql, values)
-    return result[0]
+    final_result = result.map{|transaction| Transaction.new(transaction)}
+    return final_result
   end
 
 end

@@ -40,13 +40,13 @@ put '/transactions/:id' do #UPDATE
   redirect to "/transactions"
 end
 
-get '/transactions/:id' do
+get '/transactions/:id' do #SHOW
   transaction_id = params[:id]
   @transaction = Transaction.find(transaction_id)
   erb(:"transactions/show")
 end
 
-get '/transactions_by_tag' do #TRANSACTIONS BY TAG
-  @transactions = Transaction.all()
+get '/transactions/by_tag/:id' do #TRANSACTIONS BY TAG
+  @transaction_result = Transaction.by_tag(params[:id])
   erb(:"transactions/by_tag")
 end
