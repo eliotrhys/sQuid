@@ -54,4 +54,11 @@ class Transaction
     return final_result
   end
 
+  def self.delete(id)
+    sql = "DELETE FROM transactions
+    WHERE id = $1"
+    values = [id]
+    SqlRunner.run( sql, values )
+  end
+
 end

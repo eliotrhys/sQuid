@@ -6,6 +6,8 @@
   <th>Amount</th>
   <th>Merchant ID</th>
   <th>Tag ID</th>
+  <th></th>
+  <th></th>
 </tr>
 <% for transaction in @transactions %>
 <tr>
@@ -13,6 +15,11 @@
   <td><%= transaction.amount %></td>
   <td><%= transaction.merchant.merchant_name %></td>
   <td><%= transaction.tag.tag %></td>
+  <td><button>EDIT</button></td>
+  <td><form action="/transactions/<%= transaction.id %>/delete" method="POST">
+    <input type="submit" value="DELETE"/></form></td>
 </tr>
 <% end %>
 </table>
+
+<button><a href="new_transaction">Add Transaction</a></button>

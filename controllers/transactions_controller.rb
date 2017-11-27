@@ -20,5 +20,10 @@ end
 post '/transactions' do #CREATE
   transaction = Transaction.new(params)
   transaction.save
-  redirect to ("/")
+  redirect to ("/transactions")
+end
+
+post '/transactions/:id/delete' do
+  Transaction.delete(params[:id])
+  redirect to("/transactions")
 end
