@@ -6,15 +6,12 @@
     <th>Tag</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
   <tr>
     <td><%= @transaction.id %></td>
     <td><%= @transaction.amount %></td>
     <td><%= @transaction.merchant.merchant_name %></td>
     <td><%= @transaction.tag.tag %></td>
-    <td><form action="/transactions/<%= @transaction.id %>" method="GET">
-      <input type="submit" value="INFO"/></form></td>
     <td><form action="/transactions/<%= @transaction.id %>/edit" method="GET">
       <input type="submit" value="EDIT"/></form></td>
     <td><form action="/transactions/<%= @transaction.id %>/delete" method="POST">
