@@ -1,0 +1,18 @@
+<h1>Transaction's Table</h1>
+
+<table>
+<tr>
+  <th>ID</th>
+  <th>Amount</th>
+  <th>Merchant ID</th>
+  <th>Tag ID</th>
+</tr>
+<% for transaction in @transactions %>
+<tr>
+  <td><%= transaction.id %></td>
+  <td><%= transaction.amount %></td>
+  <td><%= transaction.merchant.merchant_name %></td>
+  <td><%= transaction.tag.tag %></td>
+</tr>
+<% end %>
+</table>

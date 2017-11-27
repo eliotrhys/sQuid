@@ -1,8 +1,8 @@
 require('sinatra')
-require('sinatra/reloader')
+require( 'sinatra/contrib/all' )
 require( 'pry-byebug' )
 
-require_relative('./models/merchant.rb')
+require_relative('../models/merchant.rb')
 
 get '/merchants' do #index
   @merchants = Merchant.all()

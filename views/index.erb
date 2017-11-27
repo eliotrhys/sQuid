@@ -1,15 +1,3 @@
-<% @merchants.each do |merchant| %>
-  <div>
-    <p>Name: <%= merchant.return_name %> </p>
-  </div>
-<% end %>
+<h1>Welcome back!</h1>
 
-<% for merchant in @merchants %>
-<table>
-<tr>
-  <td><a href="<%= merchant.id %>"><%= merchant.return_name %></a></td>
-  <!-- <td>|</td>
-  <td>eiufhieu</td> -->
-</tr>
-<% end %>
-</table>
+<button><a href="/transactions">BEGIN!</a></button>
