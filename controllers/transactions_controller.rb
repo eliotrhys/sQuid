@@ -23,7 +23,19 @@ post '/transactions' do #CREATE
   redirect to ("/transactions")
 end
 
-post '/transactions/:id/delete' do
+post '/transactions/:id/delete' do #DELETE
   Transaction.delete(params[:id])
   redirect to("/transactions")
+end
+
+get '/transactions/:id/edit' do #EDIT
+  @transaction = Transaction.find(params[:id])
+  @merchants = Merchant.all
+  @tags = Tag.all
+  erb(:"transactions/edit")
+end
+
+put '/transactions/:id' do #UPDATE
+  Transaction.new(params).update
+  redirect to "/transactions"
 end

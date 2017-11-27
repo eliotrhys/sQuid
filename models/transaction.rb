@@ -61,4 +61,29 @@ class Transaction
     SqlRunner.run( sql, values )
   end
 
+  def self.find(id)
+    sql = "SELECT * FROM transactions
+    WHERE id = $1"
+    values = [id]
+    transaction = SqlRunner.run(sql, values)
+    result = Transaction.new(transaction[0])
+    return result
+  end
+
+  def update
+    sql = "UPDATE transactions
+    SET
+    (
+      amount,
+      merchant_id,
+      tag_id
+    ) =
+    (
+      $1, $2, $3
+    )
+    WHERE id = $4"
+    values = [@amount, @merchant_id, @tag_id, @id]
+    SqlRunner.run(sql, values)
+  end
+
 end

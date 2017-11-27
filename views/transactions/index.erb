@@ -4,8 +4,8 @@
 <tr>
   <th>ID</th>
   <th>Amount</th>
-  <th>Merchant ID</th>
-  <th>Tag ID</th>
+  <th>Merchant</th>
+  <th>Tag</th>
   <th></th>
   <th></th>
 </tr>
@@ -15,7 +15,8 @@
   <td><%= transaction.amount %></td>
   <td><%= transaction.merchant.merchant_name %></td>
   <td><%= transaction.tag.tag %></td>
-  <td><button>EDIT</button></td>
+  <td><form action="/transactions/<%= transaction.id %>/edit" method="GET">
+    <input type="submit" value="EDIT"/></form></td>
   <td><form action="/transactions/<%= transaction.id %>/delete" method="POST">
     <input type="submit" value="DELETE"/></form></td>
 </tr>
